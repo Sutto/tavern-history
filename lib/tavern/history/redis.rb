@@ -41,7 +41,7 @@ module Tavern
       # add the specified record to the given channel.
       def add_record(channel_name, identifier)
         stream = "#{@stream_base}:#{channel_name}"
-        current_score = (Time.now.to_f * 1000).floor
+        current_score = (Time.now.to_f * 1000000).round
         @redis.zadd stream, current_score, identifier
       end
 
